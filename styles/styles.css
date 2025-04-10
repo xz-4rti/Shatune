@@ -1,0 +1,359 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+/* Navbar Styles */
+.navbar {
+    padding: 15px 0;
+    margin-bottom: 20px;
+}
+
+.nav-items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home-icon i {
+    font-size: 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    border-radius: 20px;
+    padding: 8px 15px;
+    width: 300px;
+}
+
+.search-bar i {
+    margin-right: 10px;
+    color: #888;
+}
+
+.search-bar input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    width: 100%;
+    outline: none;
+}
+
+.search-bar input::placeholder {
+    color: #888;
+}
+
+.user-icon i {
+    font-size: 18px;
+}
+
+/* Main Content Layout */
+.main-content {
+    display: flex;
+    gap: 20px;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 100px);
+}
+
+.user-profile-mini {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #333;
+}
+
+.profile-pic {
+    margin-right: 10px;
+}
+
+.profile-pic img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-info {
+    flex-grow: 1;
+}
+
+.username {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.stats {
+    display: flex;
+    gap: 10px;
+    font-size: 0.8em;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    color: #aaa;
+}
+
+.count {
+    font-weight: bold;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: auto;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.menu-item:hover {
+    background-color: #333;
+}
+
+.menu-item.active {
+    background-color: #333;
+}
+
+.menu-item i {
+    margin-right: 15px;
+    width: 20px;
+    text-align: center;
+}
+
+.publish-btn {
+    background-color: #c11e1e;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Feed Styles */
+.feed {
+    flex-grow: 1;
+}
+
+.post-creation {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.post-creation input {
+    width: 100%;
+    background-color: #333;
+    border: none;
+    border-radius: 20px;
+    padding: 12px 15px;
+    color: #fff;
+    outline: none;
+}
+
+.post-creation input::placeholder {
+    color: #888;
+}
+
+.feed-tabs {
+    display: flex;
+    border-bottom: 1px solid #333;
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    color: #aaa;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.tab-btn.active {
+    color: #fff;
+    border-bottom: 2px solid #c11e1e;
+}
+
+.feed-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.post-item {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.post-user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.post-user i {
+    font-size: 24px;
+    margin-right: 10px;
+    color: #c11e1e;
+}
+
+.post-content {
+    margin-bottom: 15px;
+}
+
+.post-song {
+    display: flex;
+    align-items: center;
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.song-thumbnail {
+    margin-right: 15px;
+}
+
+.song-thumbnail img {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.song-info {
+    flex-grow: 1;
+}
+
+.song-title {
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.song-artist {
+    font-size: 0.9em;
+    color: #aaa;
+}
+
+.song-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    color: #aaa;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.action-btn.play {
+    color: #c11e1e;
+}
+
+.action-btn.like:hover, 
+.action-btn.share:hover {
+    color: #c11e1e;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .main-content {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+    
+    .menu {
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    
+    .menu-item {
+        flex: 1;
+        justify-content: center;
+    }
+    
+    .menu-item i {
+        margin-right: 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .search-bar {
+        width: 200px;
+    }
+    
+    .menu-item span {
+        display: none;
+    }
+    
+    .menu-item i {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-bar {
+        width: 150px;
+    }
+    
+    .nav-items {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .stats {
+        flex-direction: column;
+        gap: 5px;
+    }
+}

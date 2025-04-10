@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music App - Home</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="nav-items">
+                <div class="home-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search bar...">
+                </div>
+                <div class="user-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </nav>
+
+        <div class="main-content">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="user-profile-mini">
+                    <div class="profile-pic">
+                        <img src="/placeholder.svg?height=60&width=60" alt="Profile Picture">
+                    </div>
+                    <div class="user-info">
+                        <div class="username">@johncarlo</div>
+                        <div class="stats">
+                            <div class="stat">
+                                <span class="label">Followers</span>
+                                <span class="count">100</span>
+                            </div>
+                            <div class="stat">
+                                <span class="label">Following</span>
+                                <span class="count">100</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu">
+                    <a href="#" class="menu-item active">
+                        <i class="fas fa-home"></i>
+                        <span>HOME</span>
+                    </a>
+                    <a href="index.html" class="menu-item">
+                        <i class="fas fa-user"></i>
+                        <span>PROFILE</span>
+                    </a>
+                    <a href="#" class="menu-item">
+                        <i class="fas fa-bell"></i>
+                        <span>NOTIFICATIONS</span>
+                    </a>
+                    <a href="#" class="menu-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>MESSAGES</span>
+                    </a>
+                </div>
+                
+                <button class="publish-btn">Publicar</button>
+            </div>
+
+            <!-- Feed Content -->
+            <div class="feed">
+                <!-- Post Creation -->
+                <div class="post-creation">
+                    <input type="text" placeholder="Escribe aquí tu post...">
+                </div>
+
+                <!-- Feed Tabs -->
+                <div class="feed-tabs">
+                    <button class="tab-btn active">Para ti</button>
+                    <button class="tab-btn">Siguiendo</button>
+                </div>
+
+                <!-- Feed Posts -->
+                <div class="feed-posts">
+                    <!-- Post 1 -->
+                    <div class="post-item">
+                        <div class="post-user">
+                            <i class="fas fa-user-circle"></i>
+                            <span>@user123</span>
+                        </div>
+                        <div class="post-content">
+                            <p>Comparto una de mis canciones favoritas!!!</p>
+                        </div>
+                        <div class="post-song">
+                            <div class="song-thumbnail">
+                                <img src="/placeholder.svg?height=60&width=60" alt="Song Thumbnail">
+                            </div>
+                            <div class="song-info">
+                                <div class="song-title">Blue</div>
+                                <div class="song-artist">By Yung Kai</div>
+                            </div>
+                            <div class="song-actions">
+                                <button class="action-btn play"><i class="fas fa-play"></i></button>
+                                <button class="action-btn like"><i class="fas fa-heart"></i></button>
+                                <button class="action-btn share"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Post 2 -->
+                    <div class="post-item">
+                        <div class="post-user">
+                            <i class="fas fa-user-circle"></i>
+                            <span>@user123</span>
+                        </div>
+                        <div class="post-content">
+                            <p>Comparto una de mis canciones favoritas!!!</p>
+                        </div>
+                        <div class="post-song">
+                            <div class="song-thumbnail">
+                                <img src="/placeholder.svg?height=60&width=60" alt="Song Thumbnail">
+                            </div>
+                            <div class="song-info">
+                                <div class="song-title">Blue</div>
+                                <div class="song-artist">By Yung Kai</div>
+                            </div>
+                            <div class="song-actions">
+                                <button class="action-btn play"><i class="fas fa-play"></i></button>
+                                <button class="action-btn like"><i class="fas fa-heart"></i></button>
+                                <button class="action-btn share"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Post 3 -->
+                    <div class="post-item">
+                        <div class="post-user">
+                            <i class="fas fa-user-circle"></i>
+                            <span>@user123</span>
+                        </div>
+                        <div class="post-content">
+                            <p>Comparto una de mis canciones favoritas!!!</p>
+                        </div>
+                        <div class="post-song">
+                            <div class="song-thumbnail">
+                                <img src="/placeholder.svg?height=60&width=60" alt="Song Thumbnail">
+                            </div>
+                            <div class="song-info">
+                                <div class="song-title">Blue</div>
+                                <div class="song-artist">By Yung Kai</div>
+                            </div>
+                            <div class="song-actions">
+                                <button class="action-btn play"><i class="fas fa-play"></i></button>
+                                <button class="action-btn like"><i class="fas fa-heart"></i></button>
+                                <button class="action-btn share"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Post 4 -->
+                    <div class="post-item">
+                        <div class="post-user">
+                            <i class="fas fa-user-circle"></i>
+                            <span>@user123</span>
+                        </div>
+                        <div class="post-content">
+                            <p>Comparto una de mis canciones favoritas!!!</p>
+                        </div>
+                        <div class="post-song">
+                            <div class="song-thumbnail">
+                                <img src="/placeholder.svg?height=60&width=60" alt="Song Thumbnail">
+                            </div>
+                            <div class="song-info">
+                                <div class="song-title">Blue</div>
+                                <div class="song-artist">By Yung Kai</div>
+                            </div>
+                            <div class="song-actions">
+                                <button class="action-btn play"><i class="fas fa-play"></i></button>
+                                <button class="action-btn like"><i class="fas fa-heart"></i></button>
+                                <button class="action-btn share"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Post 5 -->
+                    <div class="post-item">
+                        <div class="post-user">
+                            <i class="fas fa-user-circle"></i>
+                            <span>@user123</span>
+                        </div>
+                        <div class="post-content">
+                            <p>Comparto una de mis canciones favoritas!!!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./scripts/script.js"></script>
+</body>
+</html>
