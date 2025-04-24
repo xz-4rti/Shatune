@@ -1,6 +1,6 @@
 // app.js - Main application logic for home page
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // DOM Elements
     const postsContainer = document.getElementById('posts-container');
     const postTemplate = document.getElementById('post-template');
@@ -51,13 +51,13 @@ document.addEventListener('DOMContentLoaded', function() {
     function init() {
         // Load current user data
         loadCurrentUser();
-        
+
         // Set up event listeners
         setupEventListeners();
 
         // Load and render posts
         renderPosts(posts);
-        
+
         // Watch for storage changes
         window.addEventListener('storage', handleStorageChange);
     }
@@ -66,11 +66,19 @@ document.addEventListener('DOMContentLoaded', function() {
     function loadCurrentUser() {
         const savedUser = JSON.parse(localStorage.getItem('currentUser'));
         if (savedUser) {
-            currentUser = savedUser;
+            // Check if profilePic is a Base64 string or old URL
+            if (savedUser.profilePic && savedUser.profilePic.startsWith('data:image')) {
+                currentUser = savedUser;
+            } else {
+                // Migrate old URL to Base64 if needed
+                currentUser = {
+                    ...savedUser,
+                    profilePic: '/placeholder.svg?height=100&width=100' // fallback
+                };
+            }
             updateUserUI();
         }
     }
-
     // Update user-related UI elements
     function updateUserUI() {
         sidebarProfilePic.src = currentUser.profilePic;
@@ -87,20 +95,20 @@ document.addEventListener('DOMContentLoaded', function() {
             if (newUserData.id === currentUser.id) {
                 currentUser = newUserData;
                 updateUserUI();
-                
+
                 // Update all posts by this user
                 const allPosts = JSON.parse(localStorage.getItem('posts')) || [];
                 const updatedPosts = allPosts.map(post => {
                     if (post.userId === currentUser.id) {
-                        return { 
-                            ...post, 
+                        return {
+                            ...post,
                             username: currentUser.username,
                             userPic: currentUser.profilePic
                         };
                     }
                     return post;
                 });
-                
+
                 localStorage.setItem('posts', JSON.stringify(updatedPosts));
                 renderPosts(updatedPosts);
             }
@@ -117,13 +125,13 @@ document.addEventListener('DOMContentLoaded', function() {
         removeMusicBtn.addEventListener('click', removeSelectedMusic);
 
         // Post interactions
-        postsContainer.addEventListener('click', function(e) {
+        postsContainer.addEventListener('click', function (e) {
             if (e.target.closest('.like-btn')) {
                 const likeBtn = e.target.closest('.like-btn');
                 const postId = likeBtn.closest('.post').dataset.postId;
                 toggleLike(postId, likeBtn);
             }
-            
+
             if (e.target.closest('.favorite-btn')) {
                 const favoriteBtn = e.target.closest('.favorite-btn');
                 const postId = favoriteBtn.closest('.post').dataset.postId;
@@ -141,13 +149,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('Please select an audio file (MP3, WAV, etc.)');
                 return;
             }
-            
+
             // Validate file size (10MB limit)
             if (file.size > 10 * 1024 * 1024) {
                 alert('File size should be less than 10MB');
                 return;
             }
-            
+
             selectedMusicFile = file;
             musicFileName.textContent = file.name;
             removeMusicBtn.style.display = 'inline-block';
@@ -218,10 +226,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Render posts to the DOM
     function renderPosts(postsToRender) {
         postsContainer.innerHTML = '';
-        
+
         // Sort by timestamp (newest first)
         postsToRender.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-        
+
         // Create and append each post
         postsToRender.forEach(post => {
             const postElement = createPostElement(post);
@@ -233,13 +241,13 @@ document.addEventListener('DOMContentLoaded', function() {
     function createPostElement(post) {
         const postElement = postTemplate.content.cloneNode(true);
         const postDiv = postElement.querySelector('.post');
-        
+
         // Set basic post info
         postDiv.dataset.postId = post.id;
         postDiv.querySelector('.post-user-img').src = post.userPic;
         postDiv.querySelector('.post-username').textContent = post.username;
         postDiv.querySelector('.post-text').textContent = post.text;
-        
+
         // Set song info if available
         if (post.song) {
             postDiv.querySelector('.song-title').textContent = post.song.title;
@@ -248,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             postDiv.querySelector('.post-song').style.display = 'none';
         }
-        
+
         // Add audio player if audio exists
         if (post.audioUrl) {
             const audioPlayer = document.createElement('div');
@@ -261,19 +269,42 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             postDiv.querySelector('.post-content').appendChild(audioPlayer);
         }
-        
+
         // Set interaction states
         const likeCount = postDiv.querySelector('.like-count');
         const likeBtn = postDiv.querySelector('.like-btn');
         const favoriteBtn = postDiv.querySelector('.favorite-btn');
-        
+
         likeCount.textContent = post.likes;
         post.isLiked ? likeBtn.classList.add('active') : likeBtn.classList.remove('active');
         post.isFavorited ? favoriteBtn.classList.add('active') : favoriteBtn.classList.remove('active');
-        
+
         // Set timestamp
         postDiv.querySelector('.post-time').textContent = formatTime(post.timestamp);
-        
+
+        const commentsContainer = postDiv.querySelector('.comments-container');
+        if (post.comments && post.comments.length > 0) {
+            post.comments.forEach(comment => {
+                commentsContainer.appendChild(createCommentElement(comment));
+            });
+        }
+
+        // Set up comment submission
+        const commentInput = postDiv.querySelector('.comment-input');
+        const postCommentBtn = postDiv.querySelector('.post-comment-btn');
+
+        postCommentBtn.addEventListener('click', () => {
+            addComment(post.id, commentInput.value.trim());
+            commentInput.value = '';
+        });
+
+        commentInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                addComment(post.id, commentInput.value.trim());
+                commentInput.value = '';
+            }
+        });
+
         return postElement;
     }
 
@@ -282,7 +313,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const now = new Date();
         const postTime = new Date(timestamp);
         const diffInSeconds = Math.floor((now - postTime) / 1000);
-        
+
         if (diffInSeconds < 60) return 'just now';
         if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)}m ago`;
         if (diffInSeconds < 86400) return `${Math.floor(diffInSeconds / 3600)}h ago`;
@@ -293,13 +324,13 @@ document.addEventListener('DOMContentLoaded', function() {
     function toggleLike(postId, likeBtn) {
         const post = posts.find(p => p.id === postId);
         if (!post) return;
-        
+
         post.isLiked = !post.isLiked;
         post.likes += post.isLiked ? 1 : -1;
-        
+
         likeBtn.classList.toggle('active');
         likeBtn.querySelector('.like-count').textContent = post.likes;
-        
+
         // Update localStorage
         localStorage.setItem('posts', JSON.stringify(posts));
     }
@@ -308,13 +339,35 @@ document.addEventListener('DOMContentLoaded', function() {
     function toggleFavorite(postId, favoriteBtn) {
         const post = posts.find(p => p.id === postId);
         if (!post) return;
-        
+
         post.isFavorited = !post.isFavorited;
         favoriteBtn.classList.toggle('active');
-        
+
         // Update localStorage
         localStorage.setItem('posts', JSON.stringify(posts));
     }
+
+    // Check and migrate old profile pictures
+    function migrateProfilePictures() {
+        const users = JSON.parse(localStorage.getItem('users')) || {};
+        let needsUpdate = false;
+
+        for (const userId in users) {
+            const user = users[userId];
+            if (user.profilePic && !user.profilePic.startsWith('data:image')) {
+                // This is an old URL-based profile picture
+                user.profilePic = '/placeholder.svg?height=100&width=100';
+                needsUpdate = true;
+            }
+        }
+
+        if (needsUpdate) {
+            localStorage.setItem('users', JSON.stringify(users));
+        }
+    }
+
+    // Call this when your app starts
+    migrateProfilePictures();
 
     // Initialize the app
     init();

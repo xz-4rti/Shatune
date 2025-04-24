@@ -1,122 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Profile</title>
-    <link rel="stylesheet" href="./styles/profile.css">
+    <title>MusicSocial - Profile</title>
+    <link rel="stylesheet" href="./styles/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <div class="container">
         <!-- Navigation Bar -->
         <nav class="navbar">
-            <div class="nav-items">
-                <div class="home-icon">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo">
                     <i class="fas fa-home"></i>
-                </div>
+                </a>
                 <div class="search-bar">
                     <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Search bar...">
+                    <input type="text" placeholder="Search bar.....">
                 </div>
-                <div class="user-icons">
+                <a href="profile.html" class="nav-profile">
                     <i class="fas fa-user"></i>
-                    <i class="fas fa-bell"></i>
-                </div>
+                </a>
             </div>
         </nav>
 
-        <!-- Profile Section -->
-        <div id="profile-section"> </div>
-
-        </div>
-
-        <!-- Posts Section -->
-        <div class="posts-section">
-            <div class="posts-header">
-                <h2>Posts</h2>
+        <!-- Profile Content -->
+        <div class="profile-content">
+            <!-- Profile Header -->
+            <div class="profile-header">
+                <div class="profile-image-large">
+                    <img src="/placeholder.svg?height=150&width=150" alt="Profile Picture" id="profile-pic-large">
+                    <input type="file" id="profile-pic-upload" accept="image/*" style="display: none;">
+                    <button id="change-profile-pic" class="edit-pic-btn"><i class="fas fa-camera"></i></button>
+                </div>
+                <div class="profile-details">
+                    <div class="username-edit">
+                        <h2 id="profile-username">@johncarlo</h2>
+                        <button id="edit-username-btn" class="edit-btn"><i class="fas fa-edit"></i></button>
+                        <input type="text" id="username-input" class="edit-input" style="display: none;">
+                        <button id="save-username-btn" class="save-btn" style="display: none;">Save</button>
+                    </div>
+                    <div class="profile-stats-row">
+                        <div class="stat-box">
+                            <span>Followers</span>
+                            <span class="count" id="follower-count">100</span>
+                        </div>
+                        <div class="stat-box">
+                            <span>Following</span>
+                            <span class="count" id="following-count">100</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="edit-profile-btn" id="edit-music-btn">Edit Music Preferences</button>
             </div>
 
-            <!-- Post Items -->
-            <div class="post-items">
-                <!-- Post 1 -->
-                <div class="post-item">
-                    <div class="post-user">
-                        <i class="fas fa-user-circle"></i>
-                        <span>@user123</span>
-                    </div>
-                    <div class="post-content">
-                        <p>Comparto una de mis canciones favoritas!!!</p>
-                    </div>
-                    <div class="post-song">
-                        <div class="song-thumbnail">
-                            <img src="/placeholder.svg?height=60&width=60" alt="Song Thumbnail">
-                        </div>
-                        <div class="song-info">
-                            <div class="song-title">Blue</div>
-                            <div class="song-artist">By Yung Kai</div>
-                        </div>
-                        <div class="song-actions">
-                            <button class="action-btn play"><i class="fas fa-play"></i></button>
-                            <button class="action-btn like"><i class="fas fa-heart"></i></button>
-                            <button class="action-btn share"><i class="fas fa-share-alt"></i></button>
-                        </div>
-                    </div>
+            <!-- Music Preferences -->
+            <div class="music-preferences" id="music-preferences">
+                <div class="music-card album-card">
+                    <img src="/placeholder.svg?height=120&width=120" alt="Album Cover" class="album-cover"
+                        id="album-cover">
+                    <p class="album-title" id="album-title">The real Slim Shady</p>
                 </div>
-
-                <!-- Post 2 -->
-                <div class="post-item">
-                    <div class="post-user">
-                        <i class="fas fa-user-circle"></i>
-                        <span>@user123</span>
-                    </div>
-                    <div class="post-content">
-                        <p>Comparto una de mis canciones favoritas!!!</p>
-                    </div>
-                    <div class="post-song">
-                        <div class="song-thumbnail">
-                            <img src="/placeholder.svg?height=60&width=60" alt="Song Thumbnail">
-                        </div>
-                        <div class="song-info">
-                            <div class="song-title">Blue</div>
-                            <div class="song-artist">By Yung Kai</div>
-                        </div>
-                        <div class="song-actions">
-                            <button class="action-btn play"><i class="fas fa-play"></i></button>
-                            <button class="action-btn like"><i class="fas fa-heart"></i></button>
-                            <button class="action-btn share"><i class="fas fa-share-alt"></i></button>
-                        </div>
-                    </div>
+                <div class="music-card artist-card">
+                    <h3 class="artist-name" id="artist-name">EMINEM</h3>
                 </div>
+                <div class="music-card genre-card">
+                    <h3 class="genre-name" id="genre-name">RAP</h3>
+                </div>
+                <div class="music-card playlist-card">
+                    <h3 class="playlist-title" id="playlist-title">Favourite songs / playlists</h3>
+                </div>
+            </div>
 
-                <!-- Post 3 -->
-                <div class="post-item">
-                    <div class="post-user">
-                        <i class="fas fa-user-circle"></i>
-                        <span>@user123</span>
-                    </div>
-                    <div class="post-content">
-                        <p>Comparto una de mis canciones favoritas!!!</p>
-                    </div>
-                    <div class="post-song">
-                        <div class="song-thumbnail">
-                            <img src="/placeholder.svg?height=60&width=60" alt="Song Thumbnail">
-                        </div>
-                        <div class="song-info">
-                            <div class="song-title">Blue</div>
-                            <div class="song-artist">By Yung Kai</div>
-                        </div>
-                        <div class="song-actions">
-                            <button class="action-btn play"><i class="fas fa-play"></i></button>
-                            <button class="action-btn like"><i class="fas fa-heart"></i></button>
-                            <button class="action-btn share"><i class="fas fa-share-alt"></i></button>
-                        </div>
-                    </div>
+            <!-- Music Edit Form (hidden by default) -->
+            <div class="music-edit-form" id="music-edit-form" style="display: none;">
+                <h3>Edit Music Preferences</h3>
+                <div class="form-group">
+                    <label for="edit-album">Favorite Album:</label>
+                    <input type="text" id="edit-album" class="edit-input">
+                </div>
+                <div class="form-group">
+                    <label for="edit-artist">Favorite Artist:</label>
+                    <input type="text" id="edit-artist" class="edit-input">
+                </div>
+                <div class="form-group">
+                    <label for="edit-genre">Favorite Genre:</label>
+                    <input type="text" id="edit-genre" class="edit-input">
+                </div>
+                <div class="form-group">
+                    <label for="edit-playlist">Playlist Description:</label>
+                    <input type="text" id="edit-playlist" class="edit-input">
+                </div>
+                <div class="form-actions">
+                    <button id="save-music-btn" class="save-btn">Save Changes</button>
+                    <button id="cancel-music-btn" class="cancel-btn">Cancel</button>
+                </div>
+            </div>
+
+            <!-- Posts Section -->
+            <div class="profile-posts">
+                <h3 class="posts-title">Posts</h3>
+                <div class="posts-container" id="profile-posts-container">
+                    <!-- Posts will be dynamically added here -->
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Post Template -->
+    <template id="post-template">
+        <div class="post" data-post-id="">
+            <div class="post-header">
+                <img src="/placeholder.svg?height=40&width=40" alt="User" class="post-user-img">
+                <span class="post-username"></span>
+                <button class="delete-post-btn"><i class="fas fa-trash"></i></button>
+            </div>
+            <div class="post-content">
+                <p class="post-text"></p>
+                <!-- Audio player will be inserted here if post has audio -->
+            </div>
+            <div class="post-song">
+                <img src="/placeholder.svg?height=60&width=60" alt="Song Cover" class="song-cover">
+                <div class="song-info">
+                    <h4 class="song-title"></h4>
+                    <p class="song-artist"></p>
+                </div>
+                <div class="song-actions">
+                    <button class="action-btn like-btn"><i class="fas fa-thumbs-up"></i> <span
+                            class="like-count">0</span></button>
+                    <button class="action-btn favorite-btn"><i class="fas fa-heart"></i></button>
+                    <button class="action-btn share-btn"><i class="fas fa-share"></i></button>
+                </div>
+            </div>
+            <div class="post-time"></div>
+        </div>
+    </template>
+
     <script src="./scripts/profile.js"></script>
 </body>
+
 </html>

@@ -12,25 +12,45 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0 15px;
 }
 
-/* Navbar Styles */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+/* Navigation Bar */
 .navbar {
+    background-color: #121212;
     padding: 15px 0;
-    margin-bottom: 20px;
+    border-bottom: 1px solid #333;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-.nav-items {
+.nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
-.home-icon i {
-    font-size: 20px;
+.nav-logo,
+.nav-profile {
+    font-size: 1.5rem;
+    color: #ffffff;
 }
 
 .search-bar {
@@ -44,164 +64,186 @@ body {
 
 .search-bar i {
     margin-right: 10px;
-    color: #888;
+    color: #777;
 }
 
 .search-bar input {
     background: transparent;
     border: none;
-    color: #fff;
-    width: 100%;
     outline: none;
-}
-
-.search-bar input::placeholder {
-    color: #888;
-}
-
-.user-icons {
-    display: flex;
-    gap: 15px;
-}
-
-.user-icons i {
-    font-size: 18px;
-}
-
-/* Profile Section Styles */
-.profile-section {
-    margin-bottom: 30px;
-}
-
-.profile-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.profile-picture {
-    position: relative;
-    text-align: center;
-}
-
-.profile-picture img {
+    color: #ffffff;
     width: 100%;
-    height: auto;
-    border-radius: 10px;
-    object-fit: cover;
 }
 
-.username {
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-.profile-card {
-    background-color: #333;
-    border-radius: 10px;
-    height: 100%;
+/* Main Content Layout */
+.main-content {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    text-align: center;
-    min-height: 100px;
-}
-
-.slim-shady {
-    background-color: #333;
-}
-
-.rap {
-    background-color: #333;
-}
-
-.eminem {
-    background-color: #333;
-}
-
-.favorites {
-    background-color: #333;
-}
-
-.card-title {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.card-subtitle {
-    font-size: 0.9em;
-    color: #ccc;
-}
-
-.profile-stats {
-    background-color: #222;
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.stat-label {
-    margin-bottom: 5px;
-}
-
-.stat-count {
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
-.edit-profile {
-    text-align: right;
-}
-
-.edit-profile button {
-    background-color: #c11e1e;
-    color: white;
-    border: none;
-    padding: 8px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-/* Posts Section Styles */
-.posts-section {
-    margin-top: 30px;
-}
-
-.posts-header {
-    border-bottom: 1px solid #333;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.post-items {
-    display: flex;
-    flex-direction: column;
+    margin-top: 20px;
     gap: 20px;
 }
 
-.post-item {
-    background-color: #1e1e1e;
+/* Sidebar Styles */
+.sidebar {
+    width: 280px;
+    background-color: #1a1a1a;
     border-radius: 10px;
-    padding: 15px;
+    padding: 20px;
+    position: sticky;
+    top: 80px;
+    height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
 }
 
-.post-user {
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.profile-image img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.profile-info {
+    text-align: center;
+}
+
+.profile-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.count {
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.menu-item:hover,
+.menu-item.active {
+    background-color: #333;
+}
+
+.menu-item i {
+    margin-right: 15px;
+    font-size: 1.2rem;
+}
+
+.publish-btn {
+    background-color: #c11e1e;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: auto;
+    transition: background-color 0.2s;
+}
+
+.publish-btn:hover {
+    background-color: #a51a1a;
+}
+
+/* Feed Styles */
+.feed {
+    flex: 1;
+}
+
+.post-creation {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.post-input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.post-user-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#post-input {
+    flex: 1;
+    background-color: #333;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 15px;
+    color: white;
+    outline: none;
+}
+
+.feed-tabs {
+    display: flex;
+    border-bottom: 1px solid #333;
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    flex: 1;
+    background: transparent;
+    color: #777;
+    padding: 10px;
+    font-weight: bold;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+}
+
+.tab-btn.active {
+    color: white;
+    border-bottom-color: #c11e1e;
+}
+
+/* Post Styles */
+.post {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.post-header {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
 }
 
-.post-user i {
-    font-size: 24px;
-    margin-right: 10px;
-    color: #c11e1e;
+.post-username {
+    margin-left: 10px;
+    font-weight: bold;
 }
 
 .post-content {
@@ -211,16 +253,12 @@ body {
 .post-song {
     display: flex;
     align-items: center;
-    background-color: #2a2a2a;
+    background-color: #252525;
     border-radius: 8px;
     padding: 10px;
 }
 
-.song-thumbnail {
-    margin-right: 15px;
-}
-
-.song-thumbnail img {
+.song-cover {
     width: 60px;
     height: 60px;
     border-radius: 5px;
@@ -228,63 +266,312 @@ body {
 }
 
 .song-info {
-    flex-grow: 1;
+    flex: 1;
+    margin-left: 15px;
 }
 
 .song-title {
-    font-weight: bold;
-    margin-bottom: 3px;
+    margin-bottom: 5px;
 }
 
 .song-artist {
-    font-size: 0.9em;
-    color: #aaa;
+    color: #999;
+    font-size: 0.9rem;
 }
 
 .song-actions {
     display: flex;
-    gap: 10px;
+    gap: 15px;
 }
 
 .action-btn {
-    background: none;
-    border: none;
-    color: #aaa;
-    font-size: 16px;
-    cursor: pointer;
+    background: transparent;
+    color: #777;
+    font-size: 1.2rem;
+    transition: color 0.2s;
 }
 
-.action-btn.play {
+.action-btn:hover,
+.action-btn.active {
     color: #c11e1e;
 }
 
-.action-btn.like:hover, 
-.action-btn.share:hover {
+.like-btn.active {
     color: #c11e1e;
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .profile-grid {
-        grid-template-columns: repeat(2, 1fr);
+.favorite-btn.active {
+    color: #c11e1e;
+}
+
+/* Profile Page Styles */
+.profile-content {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.profile-image-large img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-details {
+    margin-left: 20px;
+}
+
+.profile-stats-row {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.stat-box {
+    background-color: #252525;
+    padding: 8px 15px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit-profile-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #c11e1e;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.music-preferences {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.music-card {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+    text-align: center;
+}
+
+.album-cover {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.posts-title {
+    background-color: #1a1a1a;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .main-content {
+        flex-direction: column;
     }
-    
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        margin-bottom: 20px;
+    }
+
+    .music-preferences {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
     .search-bar {
         width: 200px;
     }
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-details {
+        margin-left: 0;
+        margin-top: 15px;
+    }
+
+    .edit-profile-btn {
+        position: static;
+        margin-top: 15px;
+    }
 }
 
-@media (max-width: 480px) {
-    .profile-grid {
-        grid-template-columns: 1fr;
-    }
-    
+@media (max-width: 576px) {
     .search-bar {
-        width: 150px;
+        display: none;
     }
-    
-    .nav-items {
-        flex-wrap: wrap;
+
+    .profile-stats-row {
+        flex-direction: column;
         gap: 10px;
     }
+}
+
+/* Add these to your existing styles.css */
+
+/* Profile posts */
+.profile-posts {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.no-posts {
+    text-align: center;
+    color: #777;
+    padding: 20px;
+}
+
+/* Music cards */
+.music-card {
+    background-color: #252525;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.music-card:hover {
+    transform: scale(1.03);
+}
+
+.album-title, .artist-name, .genre-name, .playlist-title {
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.artist-card, .genre-card, .playlist-card {
+    justify-content: center;
+}
+
+.artist-name, .genre-name, .playlist-title {
+    color: #c11e1e;
+    font-size: 1.2rem;
+}
+
+/* Music preferences grid */
+.music-preferences {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Comments Section Styles */
+.post-comments {
+    margin-top: 15px;
+    border-top: 1px solid #333;
+    padding-top: 10px;
+}
+
+.comments-container {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+.comment {
+    display: flex;
+    margin-bottom: 10px;
+    padding: 8px;
+    background-color: #252525;
+    border-radius: 5px;
+}
+
+.comment-user-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.comment-content {
+    flex: 1;
+}
+
+.comment-username {
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 3px;
+}
+
+.comment-text {
+    font-size: 0.9rem;
+    line-height: 1.3;
+}
+
+.comment-time {
+    font-size: 0.7rem;
+    color: #777;
+    margin-top: 3px;
+}
+
+.add-comment {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.comment-input {
+    flex: 1;
+    background-color: #333;
+    border: none;
+    border-radius: 15px;
+    padding: 8px 15px;
+    color: white;
+    outline: none;
+}
+
+.post-comment-btn {
+    background-color: #c11e1e;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.post-comment-btn:hover {
+    background-color: #a51a1a;
 }

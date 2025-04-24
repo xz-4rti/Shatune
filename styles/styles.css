@@ -14,23 +14,43 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 10px;
+    padding: 0 15px;
 }
 
-/* Navbar Styles */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+/* Navigation Bar */
 .navbar {
+    background-color: #121212;
     padding: 15px 0;
-    margin-bottom: 20px;
+    border-bottom: 1px solid #333;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-.nav-items {
+.nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
-.home-icon i {
-    font-size: 20px;
+.nav-logo,
+.nav-profile {
+    font-size: 1.5rem;
+    color: #ffffff;
 }
 
 .search-bar {
@@ -44,134 +64,116 @@ body {
 
 .search-bar i {
     margin-right: 10px;
-    color: #888;
+    color: #777;
 }
 
 .search-bar input {
     background: transparent;
     border: none;
-    color: #fff;
-    width: 100%;
     outline: none;
-}
-
-.search-bar input::placeholder {
-    color: #888;
-}
-
-.user-icon i {
-    font-size: 18px;
+    color: #ffffff;
+    width: 100%;
 }
 
 /* Main Content Layout */
 .main-content {
     display: flex;
+    margin-top: 20px;
     gap: 20px;
 }
 
 /* Sidebar Styles */
 .sidebar {
-    width: 250px;
+    width: 280px;
     background-color: #1a1a1a;
     border-radius: 10px;
-    padding: 15px;
+    padding: 20px;
+    position: sticky;
+    top: 80px;
+    height: calc(100vh - 100px);
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 100px);
 }
 
-.user-profile-mini {
+.profile-card {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #333;
+    margin-bottom: 30px;
 }
 
-.profile-pic {
-    margin-right: 10px;
-}
-
-.profile-pic img {
-    width: 50px;
-    height: 50px;
+.profile-image img {
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     object-fit: cover;
+    margin-bottom: 10px;
 }
 
-.user-info {
-    flex-grow: 1;
+.profile-info {
+    text-align: center;
 }
 
-.username {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.stats {
+.profile-stats {
     display: flex;
-    gap: 10px;
-    font-size: 0.8em;
+    justify-content: space-around;
+    margin-top: 10px;
+    width: 100%;
 }
 
 .stat {
     display: flex;
     flex-direction: column;
-}
-
-.label {
-    color: #aaa;
+    align-items: center;
 }
 
 .count {
     font-weight: bold;
+    margin-top: 5px;
 }
 
-.menu {
+.sidebar-menu {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    margin-bottom: auto;
+    margin-bottom: 30px;
 }
 
 .menu-item {
     display: flex;
     align-items: center;
-    text-decoration: none;
-    color: #fff;
     padding: 10px;
     border-radius: 5px;
     transition: background-color 0.2s;
 }
 
-.menu-item:hover {
-    background-color: #333;
-}
-
+.menu-item:hover,
 .menu-item.active {
     background-color: #333;
 }
 
 .menu-item i {
     margin-right: 15px;
-    width: 20px;
-    text-align: center;
+    font-size: 1.2rem;
 }
 
 .publish-btn {
     background-color: #c11e1e;
     color: white;
-    border: none;
     padding: 10px;
     border-radius: 5px;
-    cursor: pointer;
     font-weight: bold;
-    margin-top: 20px;
+    margin-top: auto;
+    transition: background-color 0.2s;
+}
+
+.publish-btn:hover {
+    background-color: #a51a1a;
 }
 
 /* Feed Styles */
 .feed {
-    flex-grow: 1;
+    flex: 1;
 }
 
 .post-creation {
@@ -181,18 +183,27 @@ body {
     margin-bottom: 20px;
 }
 
-.post-creation input {
-    width: 100%;
+.post-input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.post-user-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#post-input {
+    flex: 1;
     background-color: #333;
     border: none;
     border-radius: 20px;
-    padding: 12px 15px;
-    color: #fff;
+    padding: 10px 15px;
+    color: white;
     outline: none;
-}
-
-.post-creation input::placeholder {
-    color: #888;
 }
 
 .feed-tabs {
@@ -203,42 +214,36 @@ body {
 
 .tab-btn {
     flex: 1;
-    background: none;
-    border: none;
-    color: #aaa;
+    background: transparent;
+    color: #777;
     padding: 10px;
-    cursor: pointer;
     font-weight: bold;
-    transition: color 0.2s;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
 }
 
 .tab-btn.active {
-    color: #fff;
-    border-bottom: 2px solid #c11e1e;
+    color: white;
+    border-bottom-color: #c11e1e;
 }
 
-.feed-posts {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.post-item {
+/* Post Styles */
+.post {
     background-color: #1a1a1a;
     border-radius: 10px;
     padding: 15px;
+    margin-bottom: 20px;
 }
 
-.post-user {
+.post-header {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
 }
 
-.post-user i {
-    font-size: 24px;
-    margin-right: 10px;
-    color: #c11e1e;
+.post-username {
+    margin-left: 10px;
+    font-weight: bold;
 }
 
 .post-content {
@@ -248,16 +253,12 @@ body {
 .post-song {
     display: flex;
     align-items: center;
-    background-color: #2a2a2a;
+    background-color: #252525;
     border-radius: 8px;
     padding: 10px;
 }
 
-.song-thumbnail {
-    margin-right: 15px;
-}
-
-.song-thumbnail img {
+.song-cover {
     width: 60px;
     height: 60px;
     border-radius: 5px;
@@ -265,17 +266,17 @@ body {
 }
 
 .song-info {
-    flex-grow: 1;
+    flex: 1;
+    margin-left: 15px;
 }
 
 .song-title {
-    font-weight: bold;
-    margin-bottom: 3px;
+    margin-bottom: 5px;
 }
 
 .song-artist {
-    font-size: 0.9em;
-    color: #aaa;
+    color: #999;
+    font-size: 0.9rem;
 }
 
 .song-actions {
@@ -284,47 +285,127 @@ body {
 }
 
 .action-btn {
-    background: none;
-    border: none;
-    color: #aaa;
-    font-size: 16px;
-    cursor: pointer;
+    background: transparent;
+    color: #777;
+    font-size: 1.2rem;
+    transition: color 0.2s;
 }
 
-.action-btn.play {
+.action-btn:hover,
+.action-btn.active {
     color: #c11e1e;
 }
 
-.action-btn.like:hover, 
-.action-btn.share:hover {
+.like-btn.active {
     color: #c11e1e;
 }
 
-/* Responsive Styles */
+.favorite-btn.active {
+    color: #c11e1e;
+}
+
+/* Profile Page Styles */
+.profile-content {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.profile-image-large img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-details {
+    margin-left: 20px;
+}
+
+.profile-stats-row {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.stat-box {
+    background-color: #252525;
+    padding: 8px 15px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit-profile-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #c11e1e;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.music-preferences {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.music-card {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+    text-align: center;
+}
+
+.album-cover {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.posts-title {
+    background-color: #1a1a1a;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Responsive Design */
 @media (max-width: 992px) {
     .main-content {
         flex-direction: column;
     }
-    
+
     .sidebar {
         width: 100%;
         height: auto;
+        position: static;
         margin-bottom: 20px;
     }
-    
-    .menu {
-        flex-direction: row;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
-    
-    .menu-item {
-        flex: 1;
-        justify-content: center;
-    }
-    
-    .menu-item i {
-        margin-right: 5px;
+
+    .music-preferences {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -332,28 +413,351 @@ body {
     .search-bar {
         width: 200px;
     }
-    
-    .menu-item span {
-        display: none;
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
     }
-    
-    .menu-item i {
-        margin-right: 0;
+
+    .profile-details {
+        margin-left: 0;
+        margin-top: 15px;
+    }
+
+    .edit-profile-btn {
+        position: static;
+        margin-top: 15px;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
     .search-bar {
-        width: 150px;
+        display: none;
     }
-    
-    .nav-items {
-        flex-wrap: wrap;
+
+    .profile-stats-row {
+        flex-direction: column;
         gap: 10px;
     }
-    
-    .stats {
+}
+
+/* Add these to your existing styles.css */
+
+/* Song input fields */
+.song-input {
+    width: 100%;
+    background-color: #333;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 15px;
+    color: white;
+    outline: none;
+    margin-top: 10px;
+}
+
+/* Post time */
+.post-time {
+    color: #777;
+    font-size: 0.8rem;
+    margin-top: 10px;
+    text-align: right;
+}
+
+/* Like count */
+.like-count {
+    margin-left: 5px;
+    font-size: 0.9rem;
+}
+
+/* Post creation layout */
+.post-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .post-song {
         flex-direction: column;
-        gap: 5px;
+        align-items: flex-start;
     }
+    
+    .song-actions {
+        margin-top: 10px;
+        align-self: flex-end;
+    }
+}
+
+/* Add these to your existing styles.css */
+
+/* Music upload styles */
+.music-upload-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    background-color: #333;
+    padding: 8px 15px;
+    border-radius: 20px;
+}
+
+.music-upload-btn {
+    background-color: #c11e1e;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.2s;
+}
+
+.music-upload-btn:hover {
+    background-color: #a51a1a;
+}
+
+#music-file-name {
+    flex: 1;
+    font-size: 0.9rem;
+    color: #aaa;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.remove-btn {
+    background: none;
+    color: #777;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0;
+}
+
+.remove-btn:hover {
+    color: #c11e1e;
+}
+
+/* Audio player styles */
+.audio-player {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.audio-player audio {
+    width: 100%;
+    background-color: #252525;
+    border-radius: 10px;
+}
+
+/* Hide default file input */
+input[type="file"] {
+    display: none;
+}
+
+/* Profile Edit Styles */
+.edit-pic-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #c11e1e;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.profile-image-large {
+    position: relative;
+    display: inline-block;
+}
+
+.username-edit {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.edit-btn, .save-btn, .cancel-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.edit-btn {
+    color: #777;
+}
+
+.edit-btn:hover {
+    color: #c11e1e;
+}
+
+.save-btn {
+    background-color: #c11e1e;
+    color: white;
+}
+
+.cancel-btn {
+    background-color: #333;
+    color: white;
+    margin-left: 10px;
+}
+
+.edit-input {
+    background-color: #333;
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: white;
+    width: 200px;
+}
+
+.music-edit-form {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.music-edit-form h3 {
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.delete-post-btn {
+    background: none;
+    border: none;
+    color: #777;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.delete-post-btn:hover {
+    color: #c11e1e;
+}
+
+/* Add smooth transitions for profile picture changes */
+.profile-image img, .post-user-img {
+    transition: opacity 0.3s ease;
+}
+
+/* Loading state for profile picture */
+.profile-image.loading img {
+    opacity: 0.5;
+}
+
+/* Notification for profile updates */
+.update-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #c11e1e;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    z-index: 1000;
+    display: none;
+}
+
+/* Comments Section Styles */
+.post-comments {
+    margin-top: 15px;
+    border-top: 1px solid #333;
+    padding-top: 10px;
+}
+
+.comments-container {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+.comment {
+    display: flex;
+    margin-bottom: 10px;
+    padding: 8px;
+    background-color: #252525;
+    border-radius: 5px;
+}
+
+.comment-user-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.comment-content {
+    flex: 1;
+}
+
+.comment-username {
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 3px;
+}
+
+.comment-text {
+    font-size: 0.9rem;
+    line-height: 1.3;
+}
+
+.comment-time {
+    font-size: 0.7rem;
+    color: #777;
+    margin-top: 3px;
+}
+
+.add-comment {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.comment-input {
+    flex: 1;
+    background-color: #333;
+    border: none;
+    border-radius: 15px;
+    padding: 8px 15px;
+    color: white;
+    outline: none;
+}
+
+.post-comment-btn {
+    background-color: #c11e1e;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.post-comment-btn:hover {
+    background-color: #a51a1a;
 }
